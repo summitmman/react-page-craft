@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { ISchema } from "../shared/interfaces";
 import { processTemplate } from "../shared/utils";
 import PageRenderer from "./PageRenderer";
