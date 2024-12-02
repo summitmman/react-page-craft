@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import PageCrafter from './pageCrafter'
 import { IPage, UseStateObj } from './pageCrafter/shared/interfaces';
+import Button from './components/Button';
 
 interface IMyData extends Record<string, any> {
 	name: string;
@@ -219,6 +220,7 @@ function App() {
 				<label htmlFor="altName" className="block">This input is outside PC and still reactive</label>
 				<input id="altName" value={data.name} onChange={handleNameChange} />
 				<p className="mt-0">Value: {data.name}. You may try to change this to see the effect in PC</p>
+				<Button onClick={sayHello}>Custom button</Button>
 			</div>
 		</>
 	);
