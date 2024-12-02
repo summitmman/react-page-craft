@@ -213,6 +213,9 @@ function App() {
 						],
 						events: {
 							onClick: '{events.sayHello}'
+						},
+						props: {
+							className: 'mt-3'
 						}
 					}
 				]

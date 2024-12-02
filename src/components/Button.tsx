@@ -1,8 +1,8 @@
 import { PropsWithChildren } from "react"
 
-const Button = ({ children, ...props }: PropsWithChildren & Record<string, any>) => {
+const Button = ({ children, className = '', ...props }: PropsWithChildren & Record<string, any>) => {
     return (
-        <button className="btn btn-primary" {...props}>{children}</button>
+        <button className={"btn btn-primary " + className} {...props}>{children}</button>
     )
 }
 
