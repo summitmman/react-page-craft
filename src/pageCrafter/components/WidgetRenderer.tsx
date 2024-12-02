@@ -1,7 +1,7 @@
 import React from "react";
 import { ISchema } from "../shared/interfaces";
-import PageCrafter from "..";
 import { processTemplate } from "../shared/utils";
+import PageRenderer from "./PageRenderer";
 
 export interface IWidgetRendererProps {
 	data: Record<string, any>,
@@ -47,7 +47,7 @@ const WidgetRenderer = ({ data, events, schemaItem }: IWidgetRendererProps) => {
 	return React.createElement(
 		schemaItem.type,
 		prepState(),
-		schemaItem.children ? <PageCrafter data={data} events={events} schema={schemaItem.children} /> : null
+		schemaItem.children ? <PageRenderer data={data} events={events} schema={schemaItem.children} /> : null
 	);
 };
 

@@ -7,3 +7,8 @@ export interface ISchema {
 }
 export type PageCrafterChildren = (ISchema | string)[];
 export type UseStateObj<T> = [T, React.Dispatch<React.SetStateAction<T>>];
+export interface IPage {
+    id: string;
+    data?: Record<string, any>;
+    schema: PageCrafterChildren;
+}
