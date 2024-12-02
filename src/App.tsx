@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, lazy } from 'react';
 import PageCrafter from './pageCrafter'
 import { IPage, UseStateObj } from './pageCrafter/shared/interfaces';
-import Button from './components/Button';
+
+const Button = lazy(() => import('./components/Button'));
 
 interface IMyData extends Record<string, any> {
 	name: string;
@@ -181,7 +182,12 @@ function App() {
 							},
 							'{data.price} * {data.quantity} * 1.18 = {(data.price * data.quantity * 1.18).toFixed(2)}'
 						]
-					},
+					}
+				]
+			},
+			{
+				type: 'div',
+				children: [
 					{
 						type: 'input',
 						id: 'country',
@@ -199,6 +205,15 @@ function App() {
 						children: [
 							'{data.country}'
 						]
+					},
+					{
+						type: 'Button',
+						children: [
+							'Custom Button'
+						],
+						events: {
+							onClick: '{events.sayHello}'
+						}
 					}
 				]
 			}
@@ -212,9 +227,13 @@ function App() {
 		});
 	};
 
+	const [components] = useState({
+		Button: Button
+	});
+
 	return (
 		<>
-			<PageCrafter dataObj={dataObj as UseStateObj<any>} events={events} page={page} syncState={syncState} />
+			<PageCrafter dataObj={dataObj as UseStateObj<any>} events={events} page={page} syncState={syncState} components={components} />
 			<div>
 				<h1>This section is rendered outside the page crafter</h1>
 				<label htmlFor="altName" className="block">This input is outside PC and still reactive</label>

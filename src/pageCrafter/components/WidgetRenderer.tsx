@@ -1,15 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { ISchema } from "../shared/interfaces";
 import { processTemplate } from "../shared/utils";
 import PageRenderer from "./PageRenderer";
 
 export interface IWidgetRendererProps {
 	data: Record<string, any>,
-	events: Record<string, Function>,
+	events: Record<string, Function>;
 	schemaItem: ISchema;
+    components: Record<string, any>;
 }
 
-const WidgetRenderer = ({ data, events, schemaItem }: IWidgetRendererProps) => {
+const WidgetRenderer = ({ data, events, schemaItem, components }: IWidgetRendererProps) => {
 	const prepState = () => {
 		// props
 		const props = Object.assign({}, schemaItem.props);
@@ -43,11 +44,13 @@ const WidgetRenderer = ({ data, events, schemaItem }: IWidgetRendererProps) => {
 			...localEvents
 		};
 	};
+
+	const component = components[schemaItem.type] ?? schemaItem.type;
 	
 	return React.createElement(
-		schemaItem.type,
+		component,
 		prepState(),
-		schemaItem.children ? <PageRenderer data={data} events={events} schema={schemaItem.children} /> : null
+		schemaItem.children ? <PageRenderer data={data} events={events} schema={schemaItem.children} components={components} /> : null
 	);
 };
 

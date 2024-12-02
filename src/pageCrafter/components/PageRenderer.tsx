@@ -4,11 +4,12 @@ import WidgetRenderer from "./WidgetRenderer";
 
 interface IPageRendererProps {
     data: Record<string, any>;
-    events: Record<string, Function>,
+    events: Record<string, Function>;
     schema: PageCrafterChildren;
+    components: Record<string, any>;
 }
 
-const PageRenderer = ({ data, schema, events }: IPageRendererProps) => {
+const PageRenderer = ({ data, schema, events, components }: IPageRendererProps) => {
     return (
         <>
             {schema.map((item, index) => (
@@ -23,6 +24,7 @@ const PageRenderer = ({ data, schema, events }: IPageRendererProps) => {
                         data={data}
                         events={events}
                         schemaItem={item}
+                        components={components}
                     />
             ))}
         </>

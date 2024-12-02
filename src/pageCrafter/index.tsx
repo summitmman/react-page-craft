@@ -7,9 +7,10 @@ export interface IPageCrafterProps {
     events: Record<string, Function>,
     page: IPage;
     syncState: (data: Record<string, any>) => void;
+    components: Record<string, any>;
 }
 
-const PageCrafter = ({ dataObj, events, page, syncState }: IPageCrafterProps) => {
+const PageCrafter = ({ dataObj, events, page, syncState, components }: IPageCrafterProps) => {
     const data = {
         ...(page.data ?? {}),
         ...dataObj[0]
@@ -25,7 +26,7 @@ const PageCrafter = ({ dataObj, events, page, syncState }: IPageCrafterProps) =>
     }, [page.data ?? {}]);
     
     return (
-        <PageRenderer data={data} events={events} schema={page.schema} />
+        <PageRenderer data={data} events={events} schema={page.schema} components={components} />
     );
 }
 
