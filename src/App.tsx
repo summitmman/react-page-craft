@@ -86,10 +86,10 @@ function App() {
 								type: 'input',
 								id: 'name',
 								props: {
-									value: '{data.name}',
+									value: '{name}',
 								},
 								events: {
-									onChange: '{events.handleNameChange}'
+									onChange: '{handleNameChange}'
 								}
 							}
 						]
@@ -100,15 +100,15 @@ function App() {
 							className: 'mt-0'
 						},
 						children: [
-							'You have entered your name as {data.name}.',
-							' It has {data.name.length} characters.',
+							'You have entered your name as {name}.',
+							' It has {name.length} characters.',
 							' Notice this also reflects in the section below which is outside the control of the PC'
 						]
 					},
 					{
 						type: 'button',
 						events: {
-							onClick: '{events.sayHello}'
+							onClick: '{sayHello}'
 						},
 						children: ['Submit Name']
 					}
@@ -135,10 +135,10 @@ function App() {
 						id: 'price',
 						props: {
 							type: 'number',
-							value: '{data.price}',
+							value: '{price}',
 						},
 						events: {
-							onChange: '{events.handlePriceChange}'
+							onChange: '{handlePriceChange}'
 						}
 					},
 					{
@@ -154,10 +154,10 @@ function App() {
 						id: 'quantity',
 						props: {
 							type: 'number',
-							value: '{data.quantity}',
+							value: '{quantity}',
 						},
 						events: {
-							onChange: '{events.handleQuantityChange}'
+							onChange: '{handleQuantityChange}'
 						}
 					},
 					{
@@ -180,7 +180,7 @@ function App() {
 								type: 'b',
 								children: ['Calculation: ']
 							},
-							'{data.price} * {data.quantity} * 1.18 = {(data.price * data.quantity * 1.18).toFixed(2)}'
+							'{price} * {quantity} * 1.18 = {toFixed(price * quantity * 1.18, 2)}'
 						]
 					}
 				]
@@ -193,17 +193,17 @@ function App() {
 						id: 'country',
 						props: {
 							type: 'text',
-							value: '{data.country}',
+							value: '{country}',
 							className: 'mt-3'
 						},
 						events: {
-							onChange: '{events.handleCountryChange}'
+							onChange: '{handleCountryChange}'
 						}
 					},
 					{
 						type: 'div',
 						children: [
-							'{data.country}'
+							'{country}'
 						]
 					},
 					{
@@ -212,7 +212,7 @@ function App() {
 							'Custom Button'
 						],
 						events: {
-							onClick: '{events.sayHello}'
+							onClick: '{sayHello}'
 						},
 						props: {
 							className: 'mt-3'

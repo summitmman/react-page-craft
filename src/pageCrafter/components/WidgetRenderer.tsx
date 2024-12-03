@@ -20,7 +20,6 @@ const WidgetRenderer = ({ data, events, schemaItem, components }: IWidgetRendere
 				return;
 			}
 
-			// props[key] = processStringTemplate(dataName, data, false);
 			props[key] = processTemplate(dataName, data);
 		});
 		if (schemaItem.id) {
@@ -34,8 +33,7 @@ const WidgetRenderer = ({ data, events, schemaItem, components }: IWidgetRendere
 				return;
 			}
 			
-			// localEvents[key] = processStringTemplate(fnName, events, true);
-			localEvents[key] = processTemplate(fnName, events, 'events');
+			localEvents[key] = processTemplate(fnName, events);
 		});
 
 		// final object
